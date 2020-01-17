@@ -47,7 +47,7 @@ public class UserController {
     private ResultVO seller(@RequestParam String openid, HttpServletResponse response,
                             HttpServletRequest request){
         Cookie cookie = CookieUtil.get(request,CookieConstant.TOKEN);
-        //判断是否登录 如果已登录的话不在创建cookie和往redis里放值
+          //判断是否登录 如果已登录的话不在创建cookie和往redis里放值
         if (cookie != null
                 && StringUtils.isNotEmpty(stringRedisTemplate.opsForValue().get(String.format("token_%s", cookie.getValue())))){
             return ResultVOUtils.success(ResultEnums.LOGIN_REPEAT);
